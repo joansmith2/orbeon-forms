@@ -1,22 +1,24 @@
+---
 language: java
 jdk:
-  - oraclejdk7
+- oraclejdk7
 env:
   global:
-    - secure: "lv7PiyaATPsWOTVyrkU3jLCqUDhrmOYJvJvPADfqpwLFhysealM2YsSBS9i9M5hZ5GQZCy8oU9S9e9rzupEuK6Jt+KhJdMNwg7QJM48aot9mjoVsUTl6bLLZuO37ALzc4WHQW04++4vWPzbS/BNQbXwsu6XwHAnCKkU2xnzJgS4="
-    - secure: "bAgBFLf9R51upNAWfHJyBsByveotFRwCUAWFIiVTgCGxAE5mhWFMZl9HsAL0oiacjzmQ03u2toboOdTH/tfm2bohtQZknFleO0rDhLyW3ZmYI65vmFm1uYVrbyzMI0l7t/Ws4gZW9SC5cUl7m2GjTnB/qKg/O6uohPU7uqf8KEU="
+  - secure: lv7PiyaATPsWOTVyrkU3jLCqUDhrmOYJvJvPADfqpwLFhysealM2YsSBS9i9M5hZ5GQZCy8oU9S9e9rzupEuK6Jt+KhJdMNwg7QJM48aot9mjoVsUTl6bLLZuO37ALzc4WHQW04++4vWPzbS/BNQbXwsu6XwHAnCKkU2xnzJgS4=
+  - secure: bAgBFLf9R51upNAWfHJyBsByveotFRwCUAWFIiVTgCGxAE5mhWFMZl9HsAL0oiacjzmQ03u2toboOdTH/tfm2bohtQZknFleO0rDhLyW3ZmYI65vmFm1uYVrbyzMI0l7t/Ws4gZW9SC5cUl7m2GjTnB/qKg/O6uohPU7uqf8KEU=
 before_script:
-  - curl -L https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
+- curl -L https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 install:
-  - "sudo apt-get remove mysql-common mysql-server-5.5 mysql-server-core-5.5 mysql-client-5.5 mysql-client-core-5.5"
-  - "sudo apt-get autoremove"
-  - "sudo apt-get install libaio1"
-  - "wget -O mysql-5.6.16.deb http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.16-debian6.0-x86_64.deb"
-  - "sudo dpkg -i mysql-5.6.16.deb"
-  - "sudo cp /opt/mysql/server-5.6/support-files/mysql.server /etc/init.d/mysql.server"
-  - "sudo ln -s /opt/mysql/server-5.6/bin/* /usr/bin/"
-  - "sudo sed -i'' 's/table_cache/table_open_cache/' /etc/mysql/my.cnf"
-  - "sudo sed -i'' 's/log_slow_queries/slow_query_log/' /etc/mysql/my.cnf"
-  - "sudo sed -i'' 's/basedir[^=]\\+=.*$/basedir = \\/opt\\/mysql\\/server-5.6/' /etc/mysql/my.cnf"
-  - "sudo sed -i'' 's/max_allowed_packet[^=]\\+=.*$/max_allowed_packet = 100M/' /etc/mysql/my.cnf"
-  - "sudo /etc/init.d/mysql.server start"
+- sudo apt-get remove mysql-common mysql-server-5.5 mysql-server-core-5.5 mysql-client-5.5
+  mysql-client-core-5.5
+- sudo apt-get autoremove
+- sudo apt-get install libaio1
+- wget -O mysql-5.6.16.deb http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.16-debian6.0-x86_64.deb
+- sudo dpkg -i mysql-5.6.16.deb
+- sudo cp /opt/mysql/server-5.6/support-files/mysql.server /etc/init.d/mysql.server
+- sudo ln -s /opt/mysql/server-5.6/bin/* /usr/bin/
+- sudo sed -i'' 's/table_cache/table_open_cache/' /etc/mysql/my.cnf
+- sudo sed -i'' 's/log_slow_queries/slow_query_log/' /etc/mysql/my.cnf
+- sudo sed -i'' 's/basedir[^=]\+=.*$/basedir = \/opt\/mysql\/server-5.6/' /etc/mysql/my.cnf
+- sudo sed -i'' 's/max_allowed_packet[^=]\+=.*$/max_allowed_packet = 100M/' /etc/mysql/my.cnf
+- sudo /etc/init.d/mysql.server start
